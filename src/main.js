@@ -11,10 +11,16 @@ import 'lib-flexible'
 import Mint from 'mint-ui'
 import 'mint-ui/lib/style.css';
 import './css/style.css'
-Vue.use(VueLazyload,{
+import Vconsole from 'vconsole'
+
+Vue.use(VueLazyload, {
   error: require('./assets/error.png'),
 })
-Vue.use(Mint); 
+if (process.env.NODE_ENV === "development") {
+  let vConsole = new Vconsole()
+  Vue.use(vConsole)
+}
+Vue.use(Mint);
 Vue.config.productionTip = false
 
 // 全局导入组件
